@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.update.UpdateFragment">
+    tools:context=".fragments.note.update.UpdateFragment"
+    android:background="@color/white">
 
     <EditText
         android:id="@+id/updateNoteName_et"
@@ -15,7 +16,7 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/note_name"
+        android:hint="Название заметки"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +30,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
         android:ems="10"
-        android:hint="@string/gps"
+        android:hint="GPS - координаты"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -44,7 +45,7 @@
         android:layout_marginEnd="26dp"
         android:ems="10"
         android:gravity="top|left"
-        android:hint="@string/text"
+        android:hint="Текст заметки"
         android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
