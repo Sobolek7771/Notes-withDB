@@ -1,42 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/listFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.notes_withdb.fragments.list.ListFragment"
-        android:label="List"
-        tools:layout="@layout/fragment_list" >
+        android:name="com.example.kartoved.fragments.note.list.ListFragment"
+        android:label="Заметки"
+        tools:layout="@layout/fragment_note_list">
         <action
             android:id="@+id/action_listFragment_to_addFragment"
             app:destination="@id/addFragment" />
         <action
             android:id="@+id/action_listFragment_to_updateFragment"
             app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.notes_withdb.fragments.add.AddFragment"
-        android:label="Add"
-        tools:layout="@layout/fragment_add" >
+        android:name="com.example.kartoved.fragments.note.add.AddFragment"
+        android:label="Добавить заметку"
+        tools:layout="@layout/fragment_add">
         <action
             android:id="@+id/action_addFragment_to_listFragment"
             app:destination="@id/listFragment" />
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
-        android:name="com.example.notes_withdb.fragments.update.UpdateFragment"
-        android:label="Update"
-        tools:layout="@layout/fragment_update" >
+        android:name="com.example.kartoved.fragments.note.update.UpdateFragment"
+        android:label="Изменение замеки"
+        tools:layout="@layout/fragment_update">
         <action
             android:id="@+id/action_updateFragment_to_listFragment"
             app:destination="@id/listFragment" />
         <argument
             android:name="currentNote"
-            app:argType="com.example.notes_withdb.model.Note" />
+            app:argType="com.example.kartoved.model.Note" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.example.kartoved.fragments.network.authorization.AuthorizationFragment"
+        android:label="Авторизация">
+        <action
+            android:id="@+id/action_authorizationFragment_to_networkFragment"
+            app:destination="@id/networkFragment" />
+        <action
+            android:id="@+id/action_authorizationFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/networkFragment"
+        android:name="com.example.kartoved.fragments.network.NetworkFragment"
+        android:label="Работа с сетью">
+        <action
+            android:id="@+id/action_networkFragment_to_fragmentWorkList"
+            app:destination="@id/fragmentWorkList" />
+        <argument
+            android:name="currentWork"
+            app:argType="com.example.kartoved.model.Work"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_networkFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_networkFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentWorkList"
+        android:name="com.example.kartoved.fragments.network.worklist.WorkListFragment"
+        android:label="Список миссий"
+        tools:layout="@layout/fragment_work_list">
+        <action
+            android:id="@+id/action_fragmentWorkList_to_networkFragment"
+            app:destination="@id/networkFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.kartoved.fragments.MainFragment"
+        android:label="Картовед"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_networkFragment"
+            app:destination="@id/networkFragment" />
     </fragment>
 </navigation>
